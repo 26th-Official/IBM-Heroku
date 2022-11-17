@@ -60,11 +60,11 @@ def upload():
         x = preprocess_input(x)
         inp = np.array([x])
         with graph.as_default():
-            json_file = open('Final Deliverables\\DigitalNaturalist.json', 'r')
+            json_file = open('DigitalNaturalist.json', 'r')
             loaded_model_json = json_file.read()
             json_file.close()
             loaded_model = model_from_json(loaded_model_json)
-            loaded_model.load_weights("Final Deliverables\\DigitalNaturalist.h5")
+            loaded_model.load_weights("DigitalNaturalist.h5")
             preds =  np.argmax(loaded_model.predict(inp),axis=1)
             print("Predicted the Species " + str(predictions[preds[0]]))
         text = found[preds[0]]
@@ -73,8 +73,5 @@ def upload():
 
 
 if __name__ == '__main__':
-    app.run(threaded = True,debug=True,port="8000")
+    app.run()
     
-    
-# D:\\Projects\\IBM\\Assesment\\IBM-Project-7059-1658846575\\Project Development Phase\\Final Deliverables\\DigitalNaturalist.json
-# D:\Projects\IBM\Assesment\IBM-Project-7059-1658846575\Final Deliverables\DigitalNaturalist.json
